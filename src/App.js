@@ -196,7 +196,7 @@ function App() {
       ${data.current.other ? `建議：${data.current.other}` : ``}
     `)
     } else {
-      alert('有欄位沒有填寫到或是格式不對，再紅字的地方')
+      alert('有欄位沒有填寫到或是格式不對，再檢查一下紅字的地方')
     }
   }
   return (
