@@ -148,7 +148,11 @@ function App() {
   const handleEmail = e => {
     const emailRegexRule =
       /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/
+    console.log(emailRegexRule.test(e.target.value))
     if (emailRegexRule.test(e.target.value)) {
+      setEmail({ isntDone: !emailRegexRule.test(e.target.value) })
+      data.current.email = e.target.value
+    } else {
       setEmail({ isntDone: !emailRegexRule.test(e.target.value) })
       data.current.email = e.target.value
     }
@@ -156,6 +160,9 @@ function App() {
   const handlePhoneNumber = e => {
     const phoneNumberRegexRule = /^09\d{8}$/
     if (phoneNumberRegexRule.test(e.target.value)) {
+      setPhoneNumber({ isntDone: !phoneNumberRegexRule.test(e.target.value) })
+      data.current.phoneNumber = e.target.value
+    } else {
       setPhoneNumber({ isntDone: !phoneNumberRegexRule.test(e.target.value) })
       data.current.phoneNumber = e.target.value
     }
@@ -172,6 +179,7 @@ function App() {
     data.current.other = e.target.value
   }
   const handleButton = () => {
+    console.log(nickname.isntDone)
     if (
       data.current.nickname &&
       data.current.email &&
@@ -188,7 +196,7 @@ function App() {
       ${data.current.other ? `建議：${data.current.other}` : ``}
     `)
     } else {
-      alert('有欄位沒有填寫到或是格式不對，再檢查一下紅字的地方')
+      alert('有欄位沒有填寫到或是格式不對，再紅字的地方')
     }
   }
   return (
